@@ -1,0 +1,135 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/mvc
+		http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context-3.2.xsd
+		http://www.springframework.org/schema/aop
+		http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+		http://www.springframework.org/schema/tx
+		http://www.springframework.org/schema/tx/spring-tx-3.2.xsd ">
+
+	<!-- DB情報設定 -->
+	<bean id="propertyConfigurer" class="jp.co.jscore.backsys.common.db.EncryptPropertyPlaceholderConfigurer" >
+	        <property name="locations">
+	           <list>
+	               <value>classpath:db.properties</value>
+	           </list>
+	       </property>
+	</bean>
+
+  <bean id="dataSourceTargetDps" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+
+        <property name="driverClass" value="${db.dps.jdbc.driver}" />
+        <property name="jdbcUrl" value="jdbc:mysql://${BACKOFFICE_DATABASE_HOST}:${BACKOFFICE_DATABASE_PORT}/${BACKOFFICE_DATABASE}?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=true&amp;requreSSL=true&amp;serverTimezone=JST&amp;allowPublicKeyRetrieval=true&amp;autoReconnect=false&amp;allowPublicKeyRetrieval=true&amp;verifyServerCertificate=true&amp;trustCertificateKeyStoreType=JKS&amp;trustCertificateKeyStoreUrl=file://${DATABASE_SSL_CA}&amp;trustCertificateKeyStorePassword=${DATABASE_SSL_CA_PASSWORD}" />
+        <property name="user" value="${BACKOFFICE_DATABASE_USER}" />
+        <property name="password" value="${BACKOFFICE_DATABASE_PASSWORD}"/>
+
+     <!-- 主配置 -->
+     <!--初期化の場合、三つのコネクションを取得する。値はminPoolSizeとmaxPoolSizeの間。Default: 3 -->
+     <property name="initialPoolSize" value="${c3p0.initialPoolSize}"></property>
+     <!--プールのコネクション最小値。Default: 2 -->
+     <property name="minPoolSize" value="${c3p0.minPoolSize}"></property>
+     <!--プールのコネクション最大値。Default: 15 -->
+     <property name="maxPoolSize" value="${c3p0.maxPoolSize}"></property>
+     <!--コネクションなくなる場合、一括で申し込みコネクション数。Default: 3 -->
+     <property name="acquireIncrement" value="${c3p0.acquireIncrement}"></property>
+
+     <!-- 性能配置 -->
+     <!-- PreparedStatements件数。もしmaxStatementsとmaxStatementsPerConnectionは0の場合，キャシュークロスする。Default: 0 -->
+     <property name="maxStatements" value="${c3p0.maxStatements}"></property>
+     <!-- maxStatementsPerConnectionは一つコネクションにある最大キャッシューstatements数です。Default: 0 -->
+     <property name="maxStatementsPerConnection" value="${c3p0.maxStatementsPerConnection}"></property>
+     <!--最大暇時間,1800秒内未使用の場合捨てること。もし0の場合、永遠保留します。Default: 0 -->
+     <property name="maxIdleTime" value="${c3p0.maxIdleTime}"></property>
+     <property name="acquireRetryAttempts" value="${c3p0.acquireRetryDelay}"></property>
+     <property name="autoCommitOnClose" value="${c3p0.autoCommitOnClose}"></property>
+
+    </bean>
+    <bean id="dataSourceTargetFront" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+
+        <property name="driverClass" value="${db.front.jdbc.driver}" />
+        <property name="jdbcUrl" value="jdbc:mysql://${J_SCORE_API_DATABASE_HOST}:${J_SCORE_API_DATABASE_PORT}/${J_SCORE_API_DATABASE}?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=true&amp;requreSSL=true&amp;serverTimezone=JST&amp;allowPublicKeyRetrieval=true&amp;autoReconnect=false&amp;allowPublicKeyRetrieval=true&amp;verifyServerCertificate=true&amp;trustCertificateKeyStoreType=JKS&amp;trustCertificateKeyStoreUrl=file://${DATABASE_SSL_CA}&amp;trustCertificateKeyStorePassword=${DATABASE_SSL_CA_PASSWORD}" />
+        <property name="user" value="${J_SCORE_API_DATABASE_USER}" />
+        <property name="password" value="${J_SCORE_API_DATABASE_PASSWORD}" />
+
+     <!-- 主配置 -->
+     <!--初期化の場合、三つのコネクションを取得する。値はminPoolSizeとmaxPoolSizeの間。Default: 3 -->
+     <property name="initialPoolSize" value="${c3p0.initialPoolSize}"></property>
+     <!--プールのコネクション最小値。Default: 2 -->
+     <property name="minPoolSize" value="${c3p0.minPoolSize}"></property>
+     <!--プールのコネクション最大値。Default: 15 -->
+     <property name="maxPoolSize" value="${c3p0.maxPoolSize}"></property>
+     <!--コネクションなくなる場合、一括で申し込みコネクション数。Default: 3 -->
+     <property name="acquireIncrement" value="${c3p0.acquireIncrement}"></property>
+
+     <!-- 性能配置 -->
+     <!-- PreparedStatements件数。もしmaxStatementsとmaxStatementsPerConnectionは0の場合，キャシュークロスする。Default: 0 -->
+     <property name="maxStatements" value="${c3p0.maxStatements}"></property>
+     <!-- maxStatementsPerConnectionは一つコネクションにある最大キャッシューstatements数です。Default: 0 -->
+     <property name="maxStatementsPerConnection" value="${c3p0.maxStatementsPerConnection}"></property>
+     <!--最大暇時間,1800秒内未使用の場合捨てること。もし0の場合、永遠保留します。Default: 0 -->
+     <property name="maxIdleTime" value="${c3p0.maxIdleTime}"></property>
+     <property name="acquireRetryAttempts" value="${c3p0.acquireRetryDelay}"></property>
+     <property name="autoCommitOnClose" value="${c3p0.autoCommitOnClose}"></property>
+
+    </bean>
+    <bean id="dataSourceTargetScrbatchDB" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+
+        <property name="driverClass" value="${db.front.jdbc.driver}" />
+        <property name="jdbcUrl" value="jdbc:mysql://${SCRBATCH_DATABASE_HOST}:${SCRBATCH_DATABASE_PORT}/${SCRBATCH_DATABASE}?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=true&amp;requreSSL=true&amp;serverTimezone=JST&amp;allowPublicKeyRetrieval=true&amp;autoReconnect=false&amp;allowPublicKeyRetrieval=true&amp;verifyServerCertificate=true&amp;trustCertificateKeyStoreType=JKS&amp;trustCertificateKeyStoreUrl=file://${DATABASE_SSL_CA}&amp;trustCertificateKeyStorePassword=${DATABASE_SSL_CA_PASSWORD}" />
+        <property name="user" value="${SCRBATCH_DATABASE_USER}" />
+        <property name="password" value="${SCRBATCH_DATABASE_PASSWORD}" />
+     <!-- 主配置 -->
+     <!--初期化の場合、三つのコネクションを取得する。値はminPoolSizeとmaxPoolSizeの間。Default: 3 -->
+     <property name="initialPoolSize" value="${c3p0.initialPoolSize}"></property>
+     <!--プールのコネクション最小値。Default: 2 -->
+     <property name="minPoolSize" value="${c3p0.minPoolSize}"></property>
+     <!--プールのコネクション最大値。Default: 15 -->
+     <property name="maxPoolSize" value="${c3p0.maxPoolSize}"></property>
+     <!--コネクションなくなる場合、一括で申し込みコネクション数。Default: 3 -->
+     <property name="acquireIncrement" value="${c3p0.acquireIncrement}"></property>
+
+     <!-- 性能配置 -->
+     <!-- PreparedStatements件数。もしmaxStatementsとmaxStatementsPerConnectionは0の場合，キャシュークロスする。Default: 0 -->
+     <property name="maxStatements" value="${c3p0.maxStatements}"></property>
+     <!-- maxStatementsPerConnectionは一つコネクションにある最大キャッシューstatements数です。Default: 0 -->
+     <property name="maxStatementsPerConnection" value="${c3p0.maxStatementsPerConnection}"></property>
+     <!--最大暇時間,1800秒内未使用の場合捨てること。もし0の場合、永遠保留します。Default: 0 -->
+     <property name="maxIdleTime" value="${c3p0.maxIdleTime}"></property>
+     <property name="acquireRetryAttempts" value="${c3p0.acquireRetryDelay}"></property>
+     <property name="autoCommitOnClose" value="${c3p0.autoCommitOnClose}"></property>
+
+    </bean>
+    <!-- dynamicDataSource -->
+    <bean id="dynamicDataSource" class="jp.co.jscore.backsys.common.db.DynamicDataSource" >
+        <property name="targetDataSources">
+            <map key-type="java.lang.String">
+                <entry value-ref="dataSourceTargetDps" key="dataSourceTargetDps"></entry>
+                <entry value-ref="dataSourceTargetFront" key="dataSourceTargetFront"></entry>
+                <entry value-ref="dataSourceTargetScrbatchDB" key="dataSourceTargetScrbatchDB"></entry>
+            </map>
+        </property>
+        <property name="defaultTargetDataSource" ref="dataSourceTargetDps" >
+        </property>
+    </bean>
+
+	<!-- sqlSessionFactory -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dynamicDataSource" />
+		<!-- mybatisプロパティファイル -->
+<!-- 		<property name="configLocation" value="classpath:mybatis/sqlMapConfig.xml" /> -->
+
+	</bean>
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="jp.co.jscore.backsys.mapper"/>
+		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+	</bean>
+
+
+
+</beans>
