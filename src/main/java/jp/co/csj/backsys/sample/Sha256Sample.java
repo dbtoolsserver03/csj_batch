@@ -4,7 +4,7 @@ import java.security.MessageDigest;
 
 public class Sha256Sample {
         public static void main(String[] args) {
-                String text = "P02000000012399001123";
+                String text = "xxxx";
                 byte[] cipher_byte;
                 try{
                         MessageDigest md = MessageDigest.getInstance("SHA-256");

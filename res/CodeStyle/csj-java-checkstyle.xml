@@ -5,9 +5,9 @@
     This configuration file was written by the eclipse-cs plugin configuration editor
 -->
 <!--
-    Checkstyle-Configuration: dps-java-checkstyle
-    Description: 
-dps-java-checkstyle
+    Checkstyle-Configuration: csj-java-checkstyle
+    Description:
+csj-java-checkstyle
 -->
 <module name="Checker">
   <property name="severity" value="warning"/>

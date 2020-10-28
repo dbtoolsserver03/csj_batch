@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * CusUnionDataStatus検索用
  *
- * @author systena
+ * @author cui.shuangjia
  */
 public class CusUnionDataStatusQuery{
 

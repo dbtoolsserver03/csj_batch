@@ -10,8 +10,8 @@ package jp.co.csj.backsys.batch;
 import jp.co.csj.backsys.batch.abs.AbsApiBatch;
 import jp.co.csj.backsys.batch.check.Ck001;
 import jp.co.csj.backsys.batch.service.sv005.Sv00502Imp;
-import jp.co.csj.backsys.common.message.DpsMessageKey;
-import jp.co.csj.backsys.common.property.DpsProperties;
+import jp.co.csj.backsys.common.message.CsjMessageKey;
+import jp.co.csj.backsys.common.property.CsjProperties;
 
 public class Bt001 extends AbsApiBatch {
 
@@ -36,7 +36,7 @@ public class Bt001 extends AbsApiBatch {
     public void run() throws Throwable {
 
         // 1 本人確認中の顧客情報取得
-        log.info(DpsProperties.getMsgLog(DpsMessageKey.I0201, 55,getBatchId()));
+        log.info(CsjProperties.getMsgLog(CsjMessageKey.I0201, 55,getBatchId()));
 
         svc00502.transfer("aa");
     }
@@ -75,7 +75,7 @@ public class Bt001 extends AbsApiBatch {
     @Override
     public void init() throws Throwable {
 
-        // システム結果確認情報(DPS)
+        // システム結果確認情報(MYDB)
         svc00502 = new Sv00502Imp(this);
     }
 

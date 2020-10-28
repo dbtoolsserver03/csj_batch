@@ -9,9 +9,9 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-import jp.co.csj.backsys.common.DpsConsts;
-import jp.co.csj.backsys.common.DpsUtils;
-import jp.co.csj.backsys.common.DpsUtilsFile;
+import jp.co.csj.backsys.common.CsjConsts;
+import jp.co.csj.backsys.common.CsjUtils;
+import jp.co.csj.backsys.common.CsjUtilsFile;
 
 public class CreateData {
 
@@ -31,7 +31,6 @@ public class CreateData {
 		writer = new BufferedWriter(
 				new OutputStreamWriter(new FileOutputStream("" + "all.sql"), "utf-8"));
 
-		//createDps();
 		createFront();
 
 //		System.out.println("hello".replaceAll("l", "aaa"));
@@ -254,7 +253,7 @@ public class CreateData {
 		writer.write("COMMIT;");
 		writer.newLine();
 }
-	private static void createDps() throws Throwable {
+	private static void createCsj() throws Throwable {
 		createEnterpriseOpenCid();
 		createTOcrReadRet();
 		createSysCheckRet();
@@ -326,7 +325,7 @@ private static void createIidentityVerification() throws Throwable {
 		writer.write("delete from `t_image_judgment_ret`;");//  where `jv_id` like '"+JVID_HEAD_STR+"%';");
 		writer.newLine();
 
-		List<String> strLst = DpsUtilsFile.getFileContent("res/stub/photoTestData.txt", "utf-8");
+		List<String> strLst = CsjUtilsFile.getFileContent("res/stub/photoTestData.txt", "utf-8");
 		for (int i = 1; i <= S_NUM; i++) {
 
 			System.out.println(i);
@@ -517,10 +516,10 @@ private static void createIidentityVerification() throws Throwable {
 			String tJvid = JVID_HEAD_STR + String.format("%07d", i);
 			String tCid = JVID_HEAD_STR + String.format("%010d", i);
 			String name = "name" + String.format("%010d", i);
-			String birthday = getFormatDate(getDateDiff("1981/01/01 00:00:00", DpsConsts.YYYY_MM_DD_HH_MM_SS_SLASH_24, i),DpsConsts.YYYY_MM_DD_HH_MM_SS_SLASH_24);
+			String birthday = getFormatDate(getDateDiff("1981/01/01 00:00:00", CsjConsts.YYYY_MM_DD_HH_MM_SS_SLASH_24, i),CsjConsts.YYYY_MM_DD_HH_MM_SS_SLASH_24);
 			String address =  "address" + String.format("%010d", i);
 			String id_number = String.format("%07d", i);
-			String expire_date = getFormatDate(getDateDiff("1991/01/01 00:00:00", DpsConsts.YYYY_MM_DD_HH_MM_SS_SLASH_24, i),DpsConsts.YYYY_MM_DD_HH_MM_SS_SLASH_24);
+			String expire_date = getFormatDate(getDateDiff("1991/01/01 00:00:00", CsjConsts.YYYY_MM_DD_HH_MM_SS_SLASH_24, i),CsjConsts.YYYY_MM_DD_HH_MM_SS_SLASH_24);
 
 			sb.append("insert");
 			sb.append(" into `t_ocr_read_ret` (");
@@ -594,7 +593,7 @@ private static void createIidentityVerification() throws Throwable {
 			sb.append("'" + tJvid + "'");
 			sb.append(", '" + tCid + "'");
 			sb.append(", '" + offerId + "'");
-			sb.append(", '" + DpsUtils.getHashCodeSha256(tCid + offerId) + "'");
+			sb.append(", '" + CsjUtils.getHashCodeSha256(tCid + offerId) + "'");
 			sb.append(", '0'");
 			sb.append(", '2020/06/08 19:15:04'");
 			sb.append(", 'Bt00101'");

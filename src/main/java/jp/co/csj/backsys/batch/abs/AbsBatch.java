@@ -13,11 +13,11 @@ import java.util.Properties;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import jp.co.csj.backsys.common.DpsConsts;
-import jp.co.csj.backsys.common.DpsUtilsDate;
-import jp.co.csj.backsys.common.exception.DpsExceptionHandle;
-import jp.co.csj.backsys.common.message.DpsMessageKey;
-import jp.co.csj.backsys.common.property.DpsProperties;
+import jp.co.csj.backsys.common.CsjConsts;
+import jp.co.csj.backsys.common.CsjUtilsDate;
+import jp.co.csj.backsys.common.exception.CsjExceptionHandle;
+import jp.co.csj.backsys.common.message.CsjMessageKey;
+import jp.co.csj.backsys.common.property.CsjProperties;
 import jp.co.csj.backsys.common.property.ResourceBundleUtf8Control;
 import jp.co.csj.backsys.mapper.HeathCheckMapper;
 
@@ -50,7 +50,7 @@ public abstract class AbsBatch extends AbsLogger{
     private Date beginDate = new Date();
 
     /** 暗号化復号化キー */
-    private String dpsColumnKey;
+    private String csjColumnKey;
 
     /**
      * プロパティファイルを読み込み.
@@ -65,21 +65,21 @@ public abstract class AbsBatch extends AbsLogger{
         try {
             applicationContext = new ClassPathXmlApplicationContext(propFile);
         } catch (Exception e) {
-            log.error(MessageFormat.format(DpsMessageKey.E1001_J, propFile, getBatchId()) + DpsConsts.STR_KAKO_LEFT
-                    + DpsMessageKey.E1001 + DpsConsts.STR_KAKO_RIGHT);
+            log.error(MessageFormat.format(CsjMessageKey.E1001_J, propFile, getBatchId()) + CsjConsts.STR_KAKO_LEFT
+                    + CsjMessageKey.E1001 + CsjConsts.STR_KAKO_RIGHT);
             throw e;
         }
 
         try {
             // プロパティファイルを読み込み
-            commonProp = DpsProperties.getCommonProperties();
+            commonProp = CsjProperties.getCommonProperties();
         } catch (Exception e) {
-            log.error(MessageFormat.format(DpsMessageKey.E1001_J,
-                    DpsProperties.RESOURCE_BUNDLE + DpsConsts.STR_DOT + ResourceBundleUtf8Control.PROPERTY_EXT,
-                    getBatchId()) + DpsConsts.STR_KAKO_LEFT + DpsMessageKey.E1001 + DpsConsts.STR_KAKO_RIGHT);
+            log.error(MessageFormat.format(CsjMessageKey.E1001_J,
+                    CsjProperties.RESOURCE_BUNDLE + CsjConsts.STR_DOT + ResourceBundleUtf8Control.PROPERTY_EXT,
+                    getBatchId()) + CsjConsts.STR_KAKO_LEFT + CsjMessageKey.E1001 + CsjConsts.STR_KAKO_RIGHT);
             throw e;
         }
-        log.info(DpsProperties.getMsg(DpsMessageKey.BATCH_VERSION, getBatchId()));
+        log.info(CsjProperties.getMsg(CsjMessageKey.BATCH_VERSION, getBatchId()));
     }
 
     /**
@@ -102,19 +102,19 @@ public abstract class AbsBatch extends AbsLogger{
     public void preRun() throws Throwable {
 
         // 環境変数存在チェック
-        log.info(DpsProperties.getMsgLog(DpsMessageKey.I0002, DpsConsts.MSG_START, getBatchId()));
+        log.info(CsjProperties.getMsgLog(CsjMessageKey.I0002, CsjConsts.MSG_START, getBatchId()));
         checkSys();
-        log.info(DpsProperties.getMsgLog(DpsMessageKey.I0002, DpsConsts.MSG_END, getBatchId()));
+        log.info(CsjProperties.getMsgLog(CsjMessageKey.I0002, CsjConsts.MSG_END, getBatchId()));
 
         // プロパティ存在チェック
-        log.info(DpsProperties.getMsgLog(DpsMessageKey.I0003, DpsConsts.MSG_START, getBatchId()));
+        log.info(CsjProperties.getMsgLog(CsjMessageKey.I0003, CsjConsts.MSG_START, getBatchId()));
         checkProperties();
-        log.info(DpsProperties.getMsgLog(DpsMessageKey.I0003, DpsConsts.MSG_END, getBatchId()));
+        log.info(CsjProperties.getMsgLog(CsjMessageKey.I0003, CsjConsts.MSG_END, getBatchId()));
 
         // データベースのヘルスチェック
-        log.info(DpsProperties.getMsgLog(DpsMessageKey.I0004, DpsConsts.MSG_START, getBatchId()));
+        log.info(CsjProperties.getMsgLog(CsjMessageKey.I0004, CsjConsts.MSG_START, getBatchId()));
         dbHeathCheck();
-        log.info(DpsProperties.getMsgLog(DpsMessageKey.I0004, DpsConsts.MSG_END, getBatchId()));
+        log.info(CsjProperties.getMsgLog(CsjMessageKey.I0004, CsjConsts.MSG_END, getBatchId()));
     }
 
     /**
@@ -139,9 +139,9 @@ public abstract class AbsBatch extends AbsLogger{
      */
     public void afterRun() {
         Date endDate = new Date();
-        log.info("beginTime:[" + DpsUtilsDate.getFormatDate(beginDate, DpsConsts.YYYY_MM_DD_HH_MM_SS_SLASH_24)
-                + "] endTime:[" + DpsUtilsDate.getFormatDate(endDate, DpsConsts.YYYY_MM_DD_HH_MM_SS_SLASH_24)
-                + "] costTime:[" + DpsUtilsDate.longTimeToDay(endDate.getTime() - beginDate.getTime()) + "]");
+        log.info("beginTime:[" + CsjUtilsDate.getFormatDate(beginDate, CsjConsts.YYYY_MM_DD_HH_MM_SS_SLASH_24)
+                + "] endTime:[" + CsjUtilsDate.getFormatDate(endDate, CsjConsts.YYYY_MM_DD_HH_MM_SS_SLASH_24)
+                + "] costTime:[" + CsjUtilsDate.longTimeToDay(endDate.getTime() - beginDate.getTime()) + "]");
     }
 
     /**
@@ -155,7 +155,7 @@ public abstract class AbsBatch extends AbsLogger{
             // プロパティファイルを読み込み.
             setup();
 
-            log.info(DpsProperties.getMsgLog(DpsMessageKey.I0001, DpsConsts.MSG_START, getBatchId()));
+            log.info(CsjProperties.getMsgLog(CsjMessageKey.I0001, CsjConsts.MSG_START, getBatchId()));
 
             // バッチ実行する前の準備を行う.
             preRun();
@@ -165,7 +165,7 @@ public abstract class AbsBatch extends AbsLogger{
 
             // 主処理を行う.
             run();
-            log.info(DpsProperties.getMsgLog(DpsMessageKey.I0001, DpsConsts.MSG_END, getBatchId()));
+            log.info(CsjProperties.getMsgLog(CsjMessageKey.I0001, CsjConsts.MSG_END, getBatchId()));
 
             // 後処理を行う.
             afterRun();
@@ -173,11 +173,11 @@ public abstract class AbsBatch extends AbsLogger{
             System.exit(BATCH_RET_SUCCESS);
         } catch (Throwable e) {
 
-        	new DpsExceptionHandle(e).outputLog();
+        	new CsjExceptionHandle(e).outputLog();
 
             try {
                 // バッチ異常発生しました。
-                log.error(DpsProperties.getMsgLog(DpsMessageKey.E0001, getBatchId()));
+                log.error(CsjProperties.getMsgLog(CsjMessageKey.E0001, getBatchId()));
             } catch (Throwable e2) {
                 // 処理なし
             }
@@ -204,12 +204,12 @@ public abstract class AbsBatch extends AbsLogger{
             heathCheckMapper.heathCheck();
 
             // データベースのヘルスチェックは正常です。（データベース名前：{0}）（バッチID：{1}）
-            log.info(DpsProperties.getMsgLog(DpsMessageKey.I0006, "", getBatchId()));
+            log.info(CsjProperties.getMsgLog(CsjMessageKey.I0006, "", getBatchId()));
 
         } catch (Throwable e) {
-        	new DpsExceptionHandle(e).outputLog();
+        	new CsjExceptionHandle(e).outputLog();
             // データベースのヘルスチェックは通れません。
-            log.error(DpsProperties.getMsgLog(DpsMessageKey.E1005, "", getBatchId()));
+            log.error(CsjProperties.getMsgLog(CsjMessageKey.E1005, "", getBatchId()));
             isOk = false;
         }
 
@@ -259,12 +259,11 @@ public abstract class AbsBatch extends AbsLogger{
         this.batchNm = batchNm;
     }
 
-	public String getDpsColumnKey() {
-		return dpsColumnKey;
+	public String getCsjColumnKey() {
+		return csjColumnKey;
 	}
 
-	public void setDpsColumnKey() {
-
+	public void setCsjColumnKey(String csjColumnKey) {
+		this.csjColumnKey = csjColumnKey;
 	}
-
 }

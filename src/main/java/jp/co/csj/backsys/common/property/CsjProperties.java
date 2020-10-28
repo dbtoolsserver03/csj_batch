@@ -1,5 +1,5 @@
 /*****************************************************************************
- * プログラム ：DpsProperties.java
+ * プログラム ：CsjProperties.java
  * 説明 ：dsp-batch.propertiesからデータを取得する.
  *****************************************************************************
  * 変更履歴： 2020.02.12 : 新規作成
@@ -12,9 +12,9 @@ import java.util.Enumeration;
 import java.util.Properties;
 import java.util.ResourceBundle;
 
-import jp.co.csj.backsys.common.DpsConsts;
+import jp.co.csj.backsys.common.CsjConsts;
 
-public class DpsProperties {
+public class CsjProperties {
 
     /** batch version*/
     public static final String BATCH_VERSION = "BATCH_VERSION";
@@ -45,7 +45,7 @@ public class DpsProperties {
     public static final String Bt005_MAIL_VM_FILE = "Bt005_MAIL_VM_FILE";
 
     /** リソースバンドル：バッチ */
-	public static final String RESOURCE_BUNDLE = "dps-batch";
+	public static final String RESOURCE_BUNDLE = "csj-batch";
 
 	/** 共通プロパティ */
 	private static Properties commonProperties;
@@ -75,7 +75,7 @@ public class DpsProperties {
 	/**
 	 * コンストラクタ
 	 */
-	private DpsProperties() {
+	private CsjProperties() {
 		// ※外部からインスタンス生成不可
 	}
 
@@ -184,6 +184,6 @@ public class DpsProperties {
      */
     public static String getMsgLog(String messageKey, Object... messageAddInfo) {
 
-        return DpsConsts.STR_KAKO_LEFT + messageKey + DpsConsts.STR_KAKO_RIGHT + getMsg(messageKey, messageAddInfo);
+        return CsjConsts.STR_KAKO_LEFT + messageKey + CsjConsts.STR_KAKO_RIGHT + getMsg(messageKey, messageAddInfo);
     }
 }

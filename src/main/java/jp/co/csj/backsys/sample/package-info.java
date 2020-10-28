@@ -1,6 +1,6 @@
 /**
  * <b>サンプル用.</b>
  *
- * @author systena
+ * @author cui.shuangjia
  */
 package jp.co.csj.backsys.sample;

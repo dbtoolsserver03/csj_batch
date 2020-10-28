@@ -1,5 +1,5 @@
 /*****************************************************************************
- * プログラム ：DpsUtilsDate.java
+ * プログラム ：CsjUtilsDate.java
  * 各種日付ユーティリティクラス.
  *****************************************************************************
  * 変更履歴： 2020.02.12 : 新規作成
@@ -15,15 +15,15 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-import jp.co.csj.backsys.common.exception.DpsExceptionHandle;
+import jp.co.csj.backsys.common.exception.CsjExceptionHandle;
 
 /**
  * 各種日付ユーティリティ.
  *
- * @author systena
+ * @author cui.shuangjia
  *
  */
-public final class DpsUtilsDate {
+public final class CsjUtilsDate {
 
     /**
      * 日付文字列から指定フォマードで日付文字列に転換する.
@@ -80,7 +80,7 @@ public final class DpsUtilsDate {
             ret = sdf.format(date);
         } catch (Exception e) {
             // 処理なし
-        	new DpsExceptionHandle(e).outputLog();
+        	new CsjExceptionHandle(e).outputLog();
         }
         return ret;
     }
@@ -217,7 +217,7 @@ public final class DpsUtilsDate {
 	 */
 	public static Date getMonthLastDate(String yyyyMM) throws Throwable {
 		Calendar cale = Calendar.getInstance();
-		cale.setTime(getDate(yyyyMM + "01", DpsConsts.YYYY_MM_DD));
+		cale.setTime(getDate(yyyyMM + "01", CsjConsts.YYYY_MM_DD));
 		cale.set(Calendar.DAY_OF_MONTH, cale.getActualMaximum(Calendar.DAY_OF_MONTH));
 		return cale.getTime();
 	}

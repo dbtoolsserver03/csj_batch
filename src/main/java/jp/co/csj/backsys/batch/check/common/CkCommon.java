@@ -14,10 +14,10 @@ import java.util.Map;
 import org.apache.log4j.Logger;
 
 import jp.co.csj.backsys.batch.abs.AbsApiBatch;
-import jp.co.csj.backsys.common.DpsConsts;
-import jp.co.csj.backsys.common.DpsUtils;
-import jp.co.csj.backsys.common.message.DpsMessageKey;
-import jp.co.csj.backsys.common.property.DpsProperties;
+import jp.co.csj.backsys.common.CsjConsts;
+import jp.co.csj.backsys.common.CsjUtils;
+import jp.co.csj.backsys.common.message.CsjMessageKey;
+import jp.co.csj.backsys.common.property.CsjProperties;
 
 public class CkCommon {
 
@@ -31,57 +31,42 @@ public class CkCommon {
     }
 
 
-    public void setDpsDbSys(Map<String, String> map) {
+    public void setMydbDbSys(Map<String, String> map) {
 
         // BACKOFFICE_DATABASE
-        map.put(DpsConsts.SYS_BACKOFFICE_DATABASE_HOST, DpsConsts.LOG_J_DB_CONECT_USE);
-        map.put(DpsConsts.SYS_BACKOFFICE_DATABASE, DpsConsts.LOG_J_DB_CONECT_USE);
-        map.put(DpsConsts.SYS_BACKOFFICE_DATABASE_USER, DpsConsts.LOG_J_DB_CONECT_USE);
-        map.put(DpsConsts.SYS_BACKOFFICE_DATABASE_PASSWORD, DpsConsts.LOG_J_DB_CONECT_USE);
-        map.put(DpsConsts.SYS_BACKOFFICE_DATABASE_PORT, DpsConsts.LOG_J_DB_CONECT_USE);
-        //map.put(DpsConsts.SYS_BACKOFFICE_DATABASE_SSL_CA, DpsConsts.LOG_J_DB_CONECT_USE);
-        map.put(DpsConsts.SYS_BACKOFFICE_DATABASE_ENCRYPT_KRY, DpsConsts.LOG_J_DB_CONECT_USE);
+        map.put(CsjConsts.SYS_BACKOFFICE_DATABASE_HOST, CsjConsts.LOG_J_DB_CONECT_USE);
+        map.put(CsjConsts.SYS_BACKOFFICE_DATABASE, CsjConsts.LOG_J_DB_CONECT_USE);
+        map.put(CsjConsts.SYS_BACKOFFICE_DATABASE_USER, CsjConsts.LOG_J_DB_CONECT_USE);
+        map.put(CsjConsts.SYS_BACKOFFICE_DATABASE_PASSWORD, CsjConsts.LOG_J_DB_CONECT_USE);
+        map.put(CsjConsts.SYS_BACKOFFICE_DATABASE_PORT, CsjConsts.LOG_J_DB_CONECT_USE);
+        map.put(CsjConsts.SYS_BACKOFFICE_DATABASE_ENCRYPT_KRY, CsjConsts.LOG_J_DB_CONECT_USE);
     }
-	public void setFrontDbSys(Map<String, String> map) {
-        map.put(DpsConsts.SYS_J_SCORE_API_DATABASE_HOST, DpsConsts.LOG_J_DB_CONECT_USE);
-        map.put(DpsConsts.SYS_J_SCORE_API_DATABASE, DpsConsts.LOG_J_DB_CONECT_USE);
-        map.put(DpsConsts.SYS_J_SCORE_API_DATABASE_USER, DpsConsts.LOG_J_DB_CONECT_USE);
-        map.put(DpsConsts.SYS_J_SCORE_API_DATABASE_PASSWORD, DpsConsts.LOG_J_DB_CONECT_USE);
-        map.put(DpsConsts.SYS_J_SCORE_API_DATABASE_PORT, DpsConsts.LOG_J_DB_CONECT_USE);
-        //map.put(DpsConsts.SYS_J_SCORE_API_DATABASE_SSL_CA, DpsConsts.LOG_J_DB_CONECT_USE);
+	public void setFrtDbSys(Map<String, String> map) {
+        map.put(CsjConsts.SYS_J_SCORE_API_DATABASE_HOST, CsjConsts.LOG_J_DB_CONECT_USE);
+        map.put(CsjConsts.SYS_J_SCORE_API_DATABASE, CsjConsts.LOG_J_DB_CONECT_USE);
+        map.put(CsjConsts.SYS_J_SCORE_API_DATABASE_USER, CsjConsts.LOG_J_DB_CONECT_USE);
+        map.put(CsjConsts.SYS_J_SCORE_API_DATABASE_PASSWORD, CsjConsts.LOG_J_DB_CONECT_USE);
+        map.put(CsjConsts.SYS_J_SCORE_API_DATABASE_PORT, CsjConsts.LOG_J_DB_CONECT_USE);
 	}
 
-	public void setScrbatchDbSys(Map<String, String> map) {
-        map.put(DpsConsts.SYS_SCRBATCH_DATABASE_HOST, DpsConsts.LOG_J_DB_CONECT_USE);
-        map.put(DpsConsts.SYS_SCRBATCH_DATABASE, DpsConsts.LOG_J_DB_CONECT_USE);
-        map.put(DpsConsts.SYS_SCRBATCH_DATABASE_USER, DpsConsts.LOG_J_DB_CONECT_USE);
-        map.put(DpsConsts.SYS_SCRBATCH_DATABASE_PASSWORD, DpsConsts.LOG_J_DB_CONECT_USE);
-        map.put(DpsConsts.SYS_SCRBATCH_DATABASE_PORT, DpsConsts.LOG_J_DB_CONECT_USE);
-        //map.put(DpsConsts.SYS_SCRBATCH_DATABASE_SSL_CA, DpsConsts.LOG_J_DB_CONECT_USE);
+	public void setScrbDbSys(Map<String, String> map) {
+        map.put(CsjConsts.SYS_SCRBATCH_DATABASE_HOST, CsjConsts.LOG_J_DB_CONECT_USE);
+        map.put(CsjConsts.SYS_SCRBATCH_DATABASE, CsjConsts.LOG_J_DB_CONECT_USE);
+        map.put(CsjConsts.SYS_SCRBATCH_DATABASE_USER, CsjConsts.LOG_J_DB_CONECT_USE);
+        map.put(CsjConsts.SYS_SCRBATCH_DATABASE_PASSWORD, CsjConsts.LOG_J_DB_CONECT_USE);
+        map.put(CsjConsts.SYS_SCRBATCH_DATABASE_PORT, CsjConsts.LOG_J_DB_CONECT_USE);
 	}
 
 	public void setMailSys(Map<String, String> map) {
-        map.put(DpsConsts.SYS_AWS_CLIENT_REGION, DpsConsts.LOG_J_MAIL_SEND);
-        map.put(DpsConsts.SYS_SES_ROLE_ARN, DpsConsts.LOG_J_MAIL_SEND);
-        map.put(DpsConsts.SYS_SES_PROFILE_NAME, DpsConsts.LOG_J_MAIL_SEND);
-        map.put(DpsConsts.SYS_SES_EXTERNAL_ID, DpsConsts.LOG_J_MAIL_SEND);
+        map.put(CsjConsts.SYS_AWS_CLIENT_REGION, CsjConsts.LOG_J_MAIL_SEND);
+        map.put(CsjConsts.SYS_SES_ROLE_ARN, CsjConsts.LOG_J_MAIL_SEND);
+        map.put(CsjConsts.SYS_SES_PROFILE_NAME, CsjConsts.LOG_J_MAIL_SEND);
+        map.put(CsjConsts.SYS_SES_EXTERNAL_ID, CsjConsts.LOG_J_MAIL_SEND);
 	}
 	public void setSslCa(Map<String, String> map) {
-		map.put(DpsConsts.SYS_DATABASE_SSL_CA_PASSWORD, DpsConsts.LOG_J_DB_CONECT_USE);
-		map.put(DpsConsts.SYS_DATABASE_SSL_CA, DpsConsts.LOG_J_DB_CONECT_USE);
+		map.put(CsjConsts.SYS_DATABASE_SSL_CA_PASSWORD, CsjConsts.LOG_J_DB_CONECT_USE);
+		map.put(CsjConsts.SYS_DATABASE_SSL_CA, CsjConsts.LOG_J_DB_CONECT_USE);
 
-	}
-	/**
-	 * PDSへのファイル送信用&Token（IDトークン）取得用
-	 *
-	 * @param map
-	 */
-	public void setPdsAndTokenSys(Map<String, String> map) {
-		map.put(DpsConsts.SYS_PDS_AUTHENTICATION_URL, DpsConsts.LOG_J_PDS_OR_TOKEN_USE);
-		map.put(DpsConsts.SYS_PDS_CLIENT_ID, DpsConsts.LOG_J_PDS_OR_TOKEN_USE);
-		map.put(DpsConsts.SYS_PDS_USER_NAME, DpsConsts.LOG_J_PDS_OR_TOKEN_USE);
-		map.put(DpsConsts.SYS_PDS_USER_PASSWORD, DpsConsts.LOG_J_PDS_OR_TOKEN_USE);
-		map.put(DpsConsts.SYS_PDS_DATA_URL, DpsConsts.LOG_J_PDS_OR_TOKEN_USE);
 	}
 
 	/**
@@ -91,7 +76,7 @@ public class CkCommon {
 	 */
 	public void setCommonSys(Map<String, String> map) {
         // log
-        map.put(DpsConsts.SYS_DPS_APP_LOG, DpsConsts.LOG_J_LOG_PATH);
+        map.put(CsjConsts.SYS_CSJ_APP_LOG, CsjConsts.LOG_J_LOG_PATH);
 	}
 	/**
 	 * JsFrontAPI用
@@ -100,10 +85,10 @@ public class CkCommon {
 	 */
 	public void setJsFrontApISys(Map<String, String> map) {
         // http://xxx.xxx.xxx.xxx:9999
-        map.put(DpsConsts.SYS_HTTPS_PROXY, DpsConsts.LOG_J_HTTPS_PROXY);
+        map.put(CsjConsts.SYS_HTTPS_PROXY, CsjConsts.LOG_J_HTTPS_PROXY);
 
         // URLの一部（MCS）を取得する。
-        map.put(DpsConsts.SYS_MCS_API_URL, DpsConsts.JSFRONT_USE);
+        map.put(CsjConsts.SYS_MCS_API_URL, CsjConsts.JSFRONT_USE);
 	}
 
 	/**
@@ -114,13 +99,13 @@ public class CkCommon {
 	public void setLiquidSys(Map<String, String> map) {
 
 	    // http://xxx.xxx.xxx.xxx:9999
-	    map.put(DpsConsts.SYS_HTTPS_PROXY, DpsConsts.LOG_J_HTTPS_PROXY);
+	    map.put(CsjConsts.SYS_HTTPS_PROXY, CsjConsts.LOG_J_HTTPS_PROXY);
 
 	    // URLの一部（LIQUID）を取得する。
-	    map.put(DpsConsts.SYS_LIQUID_API_URL, DpsConsts.LIQUID_USE);
+	    map.put(CsjConsts.SYS_LIQUID_API_URL, CsjConsts.LIQUID_USE);
 
 	    // APIキー：LIQUID側から払い出されるキーを取得する。
-	    map.put(DpsConsts.SYS_LIQUID_API_KEY, DpsConsts.LIQUID_USE);
+	    map.put(CsjConsts.SYS_LIQUID_API_KEY, CsjConsts.LIQUID_USE);
 
 	}
 
@@ -128,18 +113,18 @@ public class CkCommon {
 		Map<String, String> map = new LinkedHashMap<String, String>();
 
         // メール配信 VMファイル
-        map.put(vmFileNmKey, DpsConsts.LOG_J_MAIL_SEND);
+        map.put(vmFileNmKey, CsjConsts.LOG_J_MAIL_SEND);
 
-        if (!DpsUtils.checkProperties(map, DpsMessageKey.E1003, batch.getBatchId())) {
-            throw new Throwable(DpsProperties.getMsgLog(DpsMessageKey.E0001, batch.getBatchId()));
+        if (!CsjUtils.checkProperties(map, CsjMessageKey.E1003, batch.getBatchId())) {
+            throw new Throwable(CsjProperties.getMsgLog(CsjMessageKey.E0001, batch.getBatchId()));
         }
 
-        File f = new File(DpsConsts.SYS_ENV_MAIL_RESOURCES + DpsProperties.getMsg(vmFileNmKey));
+        File f = new File(CsjConsts.SYS_ENV_MAIL_RESOURCES + CsjProperties.getMsg(vmFileNmKey));
         if (f != null && f.isFile()) {
 			// 処理なし
 		} else {
-			log.error(DpsProperties.getMsgLog(DpsMessageKey.E1001, DpsProperties.getMsg(vmFileNmKey), batch.getBatchId()));
-            throw new Throwable(DpsProperties.getMsgLog(DpsMessageKey.E0001, batch.getBatchId()));
+			log.error(CsjProperties.getMsgLog(CsjMessageKey.E1001, CsjProperties.getMsg(vmFileNmKey), batch.getBatchId()));
+            throw new Throwable(CsjProperties.getMsgLog(CsjMessageKey.E0001, batch.getBatchId()));
 		}
 	}
 

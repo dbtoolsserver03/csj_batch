@@ -12,9 +12,9 @@ import java.util.Map;
 
 import jp.co.csj.backsys.batch.abs.AbsApiBatch;
 import jp.co.csj.backsys.batch.check.common.CkCommon;
-import jp.co.csj.backsys.common.DpsUtils;
-import jp.co.csj.backsys.common.message.DpsMessageKey;
-import jp.co.csj.backsys.common.property.DpsProperties;
+import jp.co.csj.backsys.common.CsjUtils;
+import jp.co.csj.backsys.common.message.CsjMessageKey;
+import jp.co.csj.backsys.common.property.CsjProperties;
 
 public class Ck001 {
 
@@ -39,10 +39,10 @@ public class Ck001 {
         ckCommon.setJsFrontApISys(map);
 
         // BACKOFFICE_DATABASE
-        ckCommon.setDpsDbSys(map);
+        ckCommon.setMydbDbSys(map);
 
         // J_SCORE_API_DATABASE
-        ckCommon.setFrontDbSys(map);
+        ckCommon.setFrtDbSys(map);
 
         // SSL_CA
         ckCommon.setSslCa(map);
@@ -53,8 +53,8 @@ public class Ck001 {
         // Common
         ckCommon.setCommonSys(map);
 
-        if (!DpsUtils.checkSys(map, DpsMessageKey.E1002, batch.getBatchId())) {
-            throw new Throwable(DpsProperties.getMsgLog(DpsMessageKey.E0001, batch.getBatchId()));
+        if (!CsjUtils.checkSys(map, CsjMessageKey.E1002, batch.getBatchId())) {
+            throw new Throwable(CsjProperties.getMsgLog(CsjMessageKey.E0001, batch.getBatchId()));
         }
     }
 
@@ -65,7 +65,7 @@ public class Ck001 {
     public void checkProperties() throws Throwable {
 
         // vmFile check
-        ckCommon.checkMailVmFileProperties(DpsProperties.Bt005_MAIL_VM_FILE);
+        ckCommon.checkMailVmFileProperties(CsjProperties.Bt005_MAIL_VM_FILE);
 
     }
 }

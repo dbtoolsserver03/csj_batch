@@ -22,9 +22,9 @@
 	       </property>
 	</bean>
 
-  <bean id="dataSourceTargetDps" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+  <bean id="dataSourceTargetMYDB" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
 
-        <property name="driverClassName" value="${db.dps.jdbc.driver}" />
+        <property name="driverClassName" value="${db.mydb.jdbc.driver}" />
         <property name="url" value="jdbc:mysql://${BACKOFFICE_DATABASE_HOST}:${BACKOFFICE_DATABASE_PORT}/${BACKOFFICE_DATABASE}?useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=true&amp;requreSSL=true&amp;serverTimezone=JST&amp;allowPublicKeyRetrieval=true&amp;autoReconnect=false&amp;allowPublicKeyRetrieval=true&amp;verifyServerCertificate=true&amp;trustCertificateKeyStoreType=JKS&amp;trustCertificateKeyStoreUrl=file://${DATABASE_SSL_CA}&amp;trustCertificateKeyStorePassword=${DATABASE_SSL_CA_PASSWORD}" />
         <property name="username" value="${BACKOFFICE_DATABASE_USER}" />
         <property name="password" value="${BACKOFFICE_DATABASE_PASSWORD}"/>
@@ -95,12 +95,12 @@
     <bean id="dynamicDataSource" class="jp.co.jscore.backsys.common.db.DynamicDataSource" >
         <property name="targetDataSources">
             <map key-type="java.lang.String">
-                <entry value-ref="dataSourceTargetDps" key="dataSourceTargetDps"></entry>
+                <entry value-ref="dataSourceTargetMYDB" key="dataSourceTargetMYDB"></entry>
                 <entry value-ref="dataSourceTargetFront" key="dataSourceTargetFront"></entry>
                 <entry value-ref="dataSourceTargetScrbatchDB" key="dataSourceTargetScrbatchDB"></entry>
             </map>
         </property>
-        <property name="defaultTargetDataSource" ref="dataSourceTargetDps" >
+        <property name="defaultTargetDataSource" ref="dataSourceTargetMYDB" >
         </property>
     </bean>
 

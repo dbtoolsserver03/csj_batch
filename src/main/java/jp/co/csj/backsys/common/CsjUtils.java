@@ -1,5 +1,5 @@
 /*****************************************************************************
- * プログラム ：DpsUtils.java
+ * プログラム ：CsjUtils.java
  * ユーティリティクラス.
  *****************************************************************************
  * 変更履歴： 2020.02.12 : 新規作成
@@ -28,13 +28,13 @@ import org.apache.log4j.Logger;
 
 import com.ibm.icu.text.Transliterator;
 
-import jp.co.csj.backsys.common.exception.DpsExceptionHandle;
-import jp.co.csj.backsys.common.property.DpsProperties;
+import jp.co.csj.backsys.common.exception.CsjExceptionHandle;
+import jp.co.csj.backsys.common.property.CsjProperties;
 
-public class DpsUtils {
+public class CsjUtils {
 
 	/** ログ出力用 */
-    private static Logger log = Logger.getLogger(DpsUtils.class);
+    private static Logger log = Logger.getLogger(CsjUtils.class);
 
     /** 現在処理中のプロパティ名. */
     private static ThreadLocal<String> currentCopyPropertyName = new ThreadLocal<String>();
@@ -81,7 +81,7 @@ public class DpsUtils {
             oos.close();
             bos.close();
         } catch (IOException ex) {
-        	new DpsExceptionHandle(ex).outputLog();
+        	new CsjExceptionHandle(ex).outputLog();
         }
         return bytes;
     }
@@ -101,7 +101,7 @@ public class DpsUtils {
 			ois.close();
 			bis.close();
 		} catch (Throwable ex) {
-			new DpsExceptionHandle(ex).outputLog();
+			new CsjExceptionHandle(ex).outputLog();
 		}
 		return obj;
 	}
@@ -174,8 +174,8 @@ public class DpsUtils {
             newObj = "";
         }
 
-		oldObj = oldObj.replaceAll(DpsConsts.STR_ZENKAKU_SPACE, "").replaceAll(DpsConsts.STR_HANKAKU_SPACE, "");
-		newObj = newObj.replaceAll(DpsConsts.STR_ZENKAKU_SPACE, "").replaceAll(DpsConsts.STR_HANKAKU_SPACE, "");
+		oldObj = oldObj.replaceAll(CsjConsts.STR_ZENKAKU_SPACE, "").replaceAll(CsjConsts.STR_HANKAKU_SPACE, "");
+		newObj = newObj.replaceAll(CsjConsts.STR_ZENKAKU_SPACE, "").replaceAll(CsjConsts.STR_HANKAKU_SPACE, "");
 
 		return isEqual(halftoFull(oldObj), halftoFull(newObj));
     }
@@ -189,8 +189,8 @@ public class DpsUtils {
 			newObj = "";
 		}
 
-		oldObj = oldObj.replaceAll(DpsConsts.STR_ZENKAKU_SPACE, "").replaceAll(DpsConsts.STR_HANKAKU_SPACE, "");
-		newObj = newObj.replaceAll(DpsConsts.STR_ZENKAKU_SPACE, "").replaceAll(DpsConsts.STR_HANKAKU_SPACE, "");
+		oldObj = oldObj.replaceAll(CsjConsts.STR_ZENKAKU_SPACE, "").replaceAll(CsjConsts.STR_HANKAKU_SPACE, "");
+		newObj = newObj.replaceAll(CsjConsts.STR_ZENKAKU_SPACE, "").replaceAll(CsjConsts.STR_HANKAKU_SPACE, "");
 		for (String address : addressSet) {
 			oldObj = oldObj.replaceAll(address, "");
 			newObj = newObj.replaceAll(address, "");
@@ -269,7 +269,7 @@ public class DpsUtils {
                             try {
                                 copyProperty(dest, name, entry.getValue());
                             } catch (Exception e) {
-                            	new DpsExceptionHandle(e).outputLog();
+                            	new CsjExceptionHandle(e).outputLog();
                             }
                         } else {
                             copyProperty(dest, name, entry.getValue());
@@ -290,7 +290,7 @@ public class DpsUtils {
                             try {
                                 copyProperty(dest, name, value);
                             } catch (Exception e) {
-                            	new DpsExceptionHandle(e).outputLog();
+                            	new CsjExceptionHandle(e).outputLog();
                             }
                         } else {
                             copyProperty(dest, name, value);
@@ -299,7 +299,7 @@ public class DpsUtils {
                 }
             }
         } catch (Exception e) {
-        	new DpsExceptionHandle(e).outputLog();
+        	new CsjExceptionHandle(e).outputLog();
             throw new RuntimeException(e);
         }
     }
@@ -316,7 +316,7 @@ public class DpsUtils {
             currentCopyPropertyName.set(name);
             BeanUtils.copyProperty(dest, name, value);
         } catch (Exception e) {
-        	new DpsExceptionHandle(e).outputLog();
+        	new CsjExceptionHandle(e).outputLog();
             throw new RuntimeException(e);
         } finally {
             currentCopyPropertyName.remove();
@@ -330,9 +330,9 @@ public class DpsUtils {
 
             String key = entry.getKey();
             String val = entry.getValue();
-            if (DpsUtils.isEmpty(getSysEnv(key))) {
+            if (CsjUtils.isEmpty(getSysEnv(key))) {
                 isSysChkOk = false;
-                log.error(DpsProperties.getMsgLog(msgKey, key, val, para));
+                log.error(CsjProperties.getMsgLog(msgKey, key, val, para));
             }
         }
         return isSysChkOk;
@@ -357,13 +357,13 @@ public class DpsUtils {
             String val = entry.getValue();
 
             try {
-                if (DpsUtils.isEmpty(DpsProperties.getMsg(key))) {
+                if (CsjUtils.isEmpty(CsjProperties.getMsg(key))) {
                     isSysChkOk = false;
-                    log.error(DpsProperties.getMsg(msgKey, key, val, para));
+                    log.error(CsjProperties.getMsg(msgKey, key, val, para));
                 }
 			} catch (Exception e) {
 				isSysChkOk = false;
-				log.error(DpsProperties.getMsg(msgKey, key, val, para));
+				log.error(CsjProperties.getMsg(msgKey, key, val, para));
 			}
 
         }
@@ -378,7 +378,7 @@ public class DpsUtils {
 	public static String addQuotation(String str, String ch) {
 
 		if (isEmpty(str)) {
-			return DpsConsts.STR_EMPTY;
+			return CsjConsts.STR_EMPTY;
 		} else {
 			return ch + str + ch;
 		}

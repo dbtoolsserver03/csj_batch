@@ -1,5 +1,5 @@
 /*****************************************************************************
- * プログラム ：DpsUtilsFile.java
+ * プログラム ：CsjUtilsFile.java
  * 各種ファイルユーティリティ.
  *****************************************************************************
  * 変更履歴： 2020.02.12 : 新規作成
@@ -21,19 +21,19 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import jp.co.csj.backsys.common.message.DpsMessageKey;
-import jp.co.csj.backsys.common.property.DpsProperties;
+import jp.co.csj.backsys.common.message.CsjMessageKey;
+import jp.co.csj.backsys.common.property.CsjProperties;
 
 /**
  * 各種ファイルユーティリティ.
  *
- * @author systena
+ * @author cui.shuangjia
  *
  */
-public class DpsUtilsFile {
+public class CsjUtilsFile {
 
 	/** ロガー */
-	private static final Logger log = LoggerFactory.getLogger(DpsUtilsFile.class);
+	private static final Logger log = LoggerFactory.getLogger(CsjUtilsFile.class);
 
 	/**
 	 * 指定ファイルに書き込み操作.
@@ -52,7 +52,7 @@ public class DpsUtilsFile {
 				new OutputStreamWriter(new FileOutputStream(folder + fileNm), enCode));
 		for (String str : strList) {
 			writer.write(str);
-			writer.write(DpsConsts.STR_ENTER);
+			writer.write(CsjConsts.STR_ENTER);
 		}
 		writer.close();
 	}
@@ -149,14 +149,14 @@ public class DpsUtilsFile {
 			throws Throwable {
 		BufferedWriter writer = new BufferedWriter(
 				new OutputStreamWriter(new FileOutputStream(folder + fileName), enCode));
-		log.info(DpsProperties.getMsgLog(DpsMessageKey.I0008, DpsConsts.MSG_START, folder + fileName, batchId));
+		log.info(CsjProperties.getMsgLog(CsjMessageKey.I0008, CsjConsts.MSG_START, folder + fileName, batchId));
 		return writer;
 	}
 
 	public static void closeBufferedWriter(BufferedWriter writer, String folder, String fileName, String batchId)
 			throws Throwable {
 		writer.close();
-		log.info(DpsProperties.getMsgLog(DpsMessageKey.I0008, DpsConsts.MSG_END, folder + fileName, batchId));
+		log.info(CsjProperties.getMsgLog(CsjMessageKey.I0008, CsjConsts.MSG_END, folder + fileName, batchId));
 	}
 
 	public static void moveFile(String fromFile, String toFile, String batchId) throws Throwable {
@@ -174,13 +174,13 @@ public class DpsUtilsFile {
 
 	public static void makeStatusFile(String folder, String fileName, String enCode, String batchId) throws Throwable {
 		BufferedWriter writer = getBufferedWriter(folder, fileName, enCode, batchId);
-		writer.write(DpsConsts.STR_SUCESSFUL_STATUS);
+		writer.write(CsjConsts.STR_SUCESSFUL_STATUS);
 		closeBufferedWriter(writer, folder, fileName, batchId);
 	}
 
 	public static void removeFile(File file, String serverNm, String batchId) {
 		file.delete();
    		// {0}ファイル削除した。{1}（バッチID：{2}）
-   		log.info(DpsProperties.getMsgLog(DpsMessageKey.I0022, serverNm, file.getAbsolutePath(), batchId));
+   		log.info(CsjProperties.getMsgLog(CsjMessageKey.I0022, serverNm, file.getAbsolutePath(), batchId));
 	}
 }

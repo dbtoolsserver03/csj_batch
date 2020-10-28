@@ -1,6 +1,6 @@
 /*****************************************************************************
  * プログラム ：Sv00502.java
- * 説明 ：本人確認業務情報(DPS).
+ * 説明 ：本人確認業務情報(MYDB).
  *****************************************************************************
  * 変更履歴： 2020.03.23 : 新規作成
  ******************************************************************************/
@@ -14,7 +14,7 @@ import jp.co.csj.backsys.mapper.original.PersonMapper;
 import jp.co.csj.backsys.po.original.Person;
 public class Sv00502Imp {
 
-	/** 本人確認業務情報(DPS). */
+	/** 本人確認業務情報(MYDB). */
 	private PersonMapper personMapper;
 
 	private AbsApiBatch batch;
@@ -22,7 +22,7 @@ public class Sv00502Imp {
 	public Sv00502Imp(AbsApiBatch batch) throws Throwable {
 		this.batch = batch;
 
-		// 本人確認業務情報(DPS)
+		// 本人確認業務情報(MYDB)
 		personMapper = (PersonMapper) batch.getApplicationContext()
 				.getBean("personMapper");
 	}

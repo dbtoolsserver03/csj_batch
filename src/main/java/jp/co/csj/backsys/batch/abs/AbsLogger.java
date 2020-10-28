@@ -8,7 +8,7 @@ package jp.co.csj.backsys.batch.abs;
 import org.apache.log4j.FileAppender;
 import org.apache.log4j.Logger;
 
-import jp.co.csj.backsys.common.DpsConsts;
+import jp.co.csj.backsys.common.CsjConsts;
 
 public class AbsLogger extends FileAppender{
 
@@ -17,7 +17,7 @@ public class AbsLogger extends FileAppender{
 	public AbsLogger() {
 
 		super();
-		System.setProperty(DpsConsts.SYS_DPS_APP_LOG, System.getenv(DpsConsts.SYS_DPS_APP_LOG));
+		System.setProperty(CsjConsts.SYS_CSJ_APP_LOG, System.getenv(CsjConsts.SYS_CSJ_APP_LOG));
 		log = Logger.getLogger(AbsLogger.class);
 	}
 

@@ -1,5 +1,5 @@
 /*****************************************************************************
- * プログラム ：DpsConsts.java
+ * プログラム ：CsjConsts.java
  * 定数クラス.
  *****************************************************************************
  * 変更履歴： 2020.02.12 : 新規作成
@@ -7,7 +7,7 @@
 
 package jp.co.csj.backsys.common;
 
-public class DpsConsts {
+public class CsjConsts {
 
 	/** URLの一部（LIQUID） */
 	public static final String LIQUID_USE = "LIQUID API";
@@ -79,15 +79,8 @@ public class DpsConsts {
 	/** mail:SES_EXTERNAL_ID */
 	public static final String SYS_SES_EXTERNAL_ID = "SES_EXTERNAL_ID";
 
-	/** DPS_APP_LOG */
-	public static final String SYS_DPS_APP_LOG = "DPS_APP_LOG";
-
-	/** PDSへのファイル送信 */
-	public static final String SYS_PDS_AUTHENTICATION_URL = "PDS_AUTHENTICATION_URL";
-	public static final String SYS_PDS_CLIENT_ID = "PDS_CLIENT_ID";
-	public static final String SYS_PDS_USER_NAME = "PDS_USER_NAME";
-	public static final String SYS_PDS_USER_PASSWORD = "PDS_USER_PASSWORD";
-	public static final String SYS_PDS_DATA_URL = "PDS_DATA_URL";
+	/** CSJ_APP_LOG */
+	public static final String SYS_CSJ_APP_LOG = "CSJ_APP_LOG";
 
 	/** https_proxy http://xxx.xxx.xxx.xxx:9999 */
 	public static final String SYS_HTTPS_PROXY = "https_proxy";

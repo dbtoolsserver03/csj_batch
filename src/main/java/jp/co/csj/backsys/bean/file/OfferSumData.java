@@ -7,8 +7,8 @@
 
 package jp.co.csj.backsys.bean.file;
 
-import jp.co.csj.backsys.common.DpsConsts;
-import jp.co.csj.backsys.common.DpsUtils;
+import jp.co.csj.backsys.common.CsjConsts;
+import jp.co.csj.backsys.common.CsjUtils;
 
 public class OfferSumData {
 
@@ -27,26 +27,26 @@ public class OfferSumData {
 	public String toCsvHeaderString() {
 
 		StringBuffer sb = new StringBuffer();
-		sb.append(DpsUtils.addQuotation("JVID", DpsConsts.STR_EMPTY));
-		sb.append(DpsConsts.STR_CONMA);
-		sb.append(DpsUtils.addQuotation("CID", DpsConsts.STR_EMPTY));
-		sb.append(DpsConsts.STR_CONMA);
-		sb.append(DpsUtils.addQuotation("オファーID", DpsConsts.STR_EMPTY));
-		sb.append(DpsConsts.STR_CONMA);
-		sb.append(DpsUtils.addQuotation("提供日", DpsConsts.STR_EMPTY));
+		sb.append(CsjUtils.addQuotation("JVID", CsjConsts.STR_EMPTY));
+		sb.append(CsjConsts.STR_CONMA);
+		sb.append(CsjUtils.addQuotation("CID", CsjConsts.STR_EMPTY));
+		sb.append(CsjConsts.STR_CONMA);
+		sb.append(CsjUtils.addQuotation("オファーID", CsjConsts.STR_EMPTY));
+		sb.append(CsjConsts.STR_CONMA);
+		sb.append(CsjUtils.addQuotation("提供日", CsjConsts.STR_EMPTY));
 		return sb.toString();
 	}
 
 	public String toCsvDataString() {
 
 		StringBuffer sb = new StringBuffer();
-		sb.append(DpsUtils.addQuotation(jvId, DpsConsts.STR_EMPTY));
-		sb.append(DpsConsts.STR_CONMA);
-		sb.append(DpsUtils.addQuotation(cid, DpsConsts.STR_EMPTY));
-		sb.append(DpsConsts.STR_CONMA);
-		sb.append(DpsUtils.addQuotation(offerId, DpsConsts.STR_EMPTY));
-		sb.append(DpsConsts.STR_CONMA);
-		sb.append(DpsUtils.addQuotation(createAt, DpsConsts.STR_EMPTY));
+		sb.append(CsjUtils.addQuotation(jvId, CsjConsts.STR_EMPTY));
+		sb.append(CsjConsts.STR_CONMA);
+		sb.append(CsjUtils.addQuotation(cid, CsjConsts.STR_EMPTY));
+		sb.append(CsjConsts.STR_CONMA);
+		sb.append(CsjUtils.addQuotation(offerId, CsjConsts.STR_EMPTY));
+		sb.append(CsjConsts.STR_CONMA);
+		sb.append(CsjUtils.addQuotation(createAt, CsjConsts.STR_EMPTY));
 		return sb.toString();
 	}
 

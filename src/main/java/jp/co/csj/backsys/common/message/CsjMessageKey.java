@@ -1,12 +1,12 @@
 /*****************************************************************************
- * プログラム ：DpsMessageKey.java 説明 ：メッセージキークラス.
+ * プログラム ：CsjMessageKey.java 説明 ：メッセージキークラス.
  *****************************************************************************
  * 変更履歴： 2020.02.12 : 新規作成
  ******************************************************************************/
 
 package jp.co.csj.backsys.common.message;
 
-public class DpsMessageKey {
+public class CsjMessageKey {
 
 	public static final String BATCH_VERSION = "BATCH_VERSION";
 
@@ -229,11 +229,11 @@ public class DpsMessageKey {
 
 
 
-	// ログ(定期データ登録・更新)
-	/** メッセージキー：I0101(企業公開用CID(DPS)テーブルに、該当データがありません。jvid:{0}.cid:{1}.offer_id:{2}.（バッチID：{3}）) */
+	// ログ(定期登録・更新)
+	/** メッセージキー：I0101(公開用CID(MYDB)テーブルに、該当データがありません。jvid:{0}.cid:{1}.offer_id:{2}.（バッチID：{3}）) */
 	public static final String I0101 = "I0101";
 
-	// 警告ログ(本人確認・反社照会)
+	// 警告ログ(本人照会)
 	/** メッセージキー：W0202(既に実行済みのため、比較処理は不要です。jvid:{0}.cid:{1}.（バッチID：{2}）) */
 	public static final String W0202 = "W0202";
 	// 警告ログ(本人確認完了配信 )

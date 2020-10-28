@@ -1,5 +1,5 @@
 /*****************************************************************************
- * プログラム ：DpsException.java
+ * プログラム ：CsjException.java
  * 説明 ：エクセプションクラス.
  *****************************************************************************
  * 変更履歴： 2020.03.12 : 新規作成
@@ -9,12 +9,12 @@ package jp.co.csj.backsys.common.exception;
 
 import org.apache.log4j.Logger;
 
-public class DpsExceptionHandle {
+public class CsjExceptionHandle {
 
-    private static Logger log = Logger.getLogger(DpsExceptionHandle.class);
+    private static Logger log = Logger.getLogger(CsjExceptionHandle.class);
 
 	private Throwable e;
-	public DpsExceptionHandle(Throwable e) {
+	public CsjExceptionHandle(Throwable e) {
 		this.e = e;
 	}
 

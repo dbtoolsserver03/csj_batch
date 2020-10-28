@@ -7,8 +7,8 @@
 
 package jp.co.csj.backsys.bean.file;
 
-import jp.co.csj.backsys.common.DpsConsts;
-import jp.co.csj.backsys.common.DpsUtils;
+import jp.co.csj.backsys.common.CsjConsts;
+import jp.co.csj.backsys.common.CsjUtils;
 
 public class OfferEnterpriseAgree {
 
@@ -74,26 +74,26 @@ public class OfferEnterpriseAgree {
 	public String toCsvHeaderString() {
 
 		StringBuffer sb = new StringBuffer();
-		sb.append(DpsUtils.addQuotation("offer_id", DpsConsts.STR_DOUBLE_QUOTATION));
-		sb.append(DpsConsts.STR_CONMA);
-		sb.append(DpsUtils.addQuotation("cid", DpsConsts.STR_DOUBLE_QUOTATION));
-		sb.append(DpsConsts.STR_CONMA);
-		sb.append(DpsUtils.addQuotation("cid_by_offer", DpsConsts.STR_DOUBLE_QUOTATION));
-		sb.append(DpsConsts.STR_CONMA);
-		sb.append(DpsUtils.addQuotation("open_flg", DpsConsts.STR_DOUBLE_QUOTATION));
+		sb.append(CsjUtils.addQuotation("offer_id", CsjConsts.STR_DOUBLE_QUOTATION));
+		sb.append(CsjConsts.STR_CONMA);
+		sb.append(CsjUtils.addQuotation("cid", CsjConsts.STR_DOUBLE_QUOTATION));
+		sb.append(CsjConsts.STR_CONMA);
+		sb.append(CsjUtils.addQuotation("cid_by_offer", CsjConsts.STR_DOUBLE_QUOTATION));
+		sb.append(CsjConsts.STR_CONMA);
+		sb.append(CsjUtils.addQuotation("open_flg", CsjConsts.STR_DOUBLE_QUOTATION));
 		return sb.toString();
 	}
 
 	public String toCsvDataString() {
 
 		StringBuffer sb = new StringBuffer();
-		sb.append(DpsUtils.addQuotation(offerId, DpsConsts.STR_DOUBLE_QUOTATION));
-		sb.append(DpsConsts.STR_CONMA);
-		sb.append(DpsUtils.addQuotation(cid, DpsConsts.STR_DOUBLE_QUOTATION));
-		sb.append(DpsConsts.STR_CONMA);
-		sb.append(DpsUtils.addQuotation(hashCid, DpsConsts.STR_DOUBLE_QUOTATION));
-		sb.append(DpsConsts.STR_CONMA);
-		sb.append(DpsUtils.addQuotation(openFLg, DpsConsts.STR_DOUBLE_QUOTATION));
+		sb.append(CsjUtils.addQuotation(offerId, CsjConsts.STR_DOUBLE_QUOTATION));
+		sb.append(CsjConsts.STR_CONMA);
+		sb.append(CsjUtils.addQuotation(cid, CsjConsts.STR_DOUBLE_QUOTATION));
+		sb.append(CsjConsts.STR_CONMA);
+		sb.append(CsjUtils.addQuotation(hashCid, CsjConsts.STR_DOUBLE_QUOTATION));
+		sb.append(CsjConsts.STR_CONMA);
+		sb.append(CsjUtils.addQuotation(openFLg, CsjConsts.STR_DOUBLE_QUOTATION));
 		return sb.toString();
 	}
 }
