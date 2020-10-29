@@ -50,38 +50,32 @@
     </bean>
 
  <!-- 使用注解事务，需要添加Transactional注解属性 -->
-<!--     <tx:annotation-driven transaction-manager="transactionManager"/> -->
+    <tx:annotation-driven transaction-manager="transactionManager"/>
  <!--启用最新的注解器、映射器-->
 <!--     <mvc:annotation-driven/> -->
 
 
-
-
 <!-- 配置事务的通知：(事务的增强) -->
-	<tx:advice id="txAdvice" transaction-manager="transactionManager">
-		<tx:attributes>
-			<!--
-				propagation :事务的传播行为
-				isolation   :事务的隔离级别
-				read-only   :只读
-				rollback-for:发生哪些异常回滚
-				no-rollback-for:发生哪些异常不回滚
-				timeout     :过期信息
-			 -->
-			<tx:method name="transfer" rollback-for="ArithmeticException"/>
-		</tx:attributes>
-	</tx:advice>
+<!-- 	<tx:advice id="txAdvice" transaction-manager="transactionManager"> -->
+<!-- 		<tx:attributes> -->
+<!-- 				propagation :事务的传播行为 -->
+<!-- 				isolation   :事务的隔离级别 -->
+<!-- 				read-only   :只读 -->
+<!-- 				rollback-for:发生哪些异常回滚 -->
+<!-- 				no-rollback-for:发生哪些异常不回滚 -->
+<!-- 				timeout     :过期信息 -->
+<!-- 			<tx:method name="transfer" rollback-for="ArithmeticException"/> -->
+<!-- 		</tx:attributes> -->
+<!-- 	</tx:advice> -->
 
 	<!-- 配置切面  -->
-	<aop:config>
-		<!-- 配置切入点 -->
-		<aop:pointcut id="pointcut"
-			expression="execution(* jp.co.csj.backsys.batch.service.*.*(..))" />
-		<!-- 配置切面 -->
-		<aop:advisor pointcut-ref="pointcut" advice-ref="txAdvice" />
-	</aop:config>
+<!-- 	<aop:config> -->
+<!-- 		<aop:pointcut id="pointcut" -->
+<!-- 			expression="execution(* jp.co.csj.backsys.batch.service.*.*(..))" /> -->
+<!-- 		<aop:advisor pointcut-ref="pointcut" advice-ref="txAdvice" /> -->
+<!-- 	</aop:config> -->
 
 
  <context:annotation-config />
-    <context:component-scan base-package="jp.co" />
+    <context:component-scan base-package="jp.co.csj.backsys.batch.service.sv005" />
 </beans>
