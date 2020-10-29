@@ -19,30 +19,8 @@ public class CsjProperties {
     /** batch version*/
     public static final String BATCH_VERSION = "BATCH_VERSION";
 
-    /** Liquid Header Key*/
-    public static final String API_LIQUID_HEADER_API_KEY = "API_LIQUID_HEADER_API_KEY";
-
-    /** 本人確認結果登録API */
-    public static final String API_URL_PERSON_CONFIRM_RET_INS = "API_URL_PERSON_CONFIRM_RET_INS";
-
-    /** OCR結果取得API */
-    public static final String API_URL_OCR_RET_GET = "API_URL_OCR_RET_GET";
-
-    /** 自動判定結果取得API */
-    public static final String API_URL_AUTO_JUDGE_RET_GET = "API_URL_AUTO_JUDGE_RET_GET";
-
-    /** 画像データ取得API */
-    public static final String API_URL_IMAGE_DATA_GET = "API_URL_IMAGE_DATA_GET";
-
-    /** 口座開設結果登録API */
-    public static final String API_URL_ACCOUNT_OPEN_RET_GET = "API_URL_ACCOUNT_OPEN_RET_GET";
-
-    public static final String Bt004_EXECUDE_DATE = "Bt004_EXECUDE_DATE";
     /** メール配信 VMファイル */
     public static final String Bt001_MAIL_VM_FILE = "Bt001_MAIL_VM_FILE";
-    public static final String Bt003_MAIL_VM_FILE = "Bt003_MAIL_VM_FILE";
-    public static final String Bt004_MAIL_VM_FILE = "Bt004_MAIL_VM_FILE";
-    public static final String Bt005_MAIL_VM_FILE = "Bt005_MAIL_VM_FILE";
 
     /** リソースバンドル：バッチ */
 	public static final String RESOURCE_BUNDLE = "csj-batch";
@@ -52,25 +30,6 @@ public class CsjProperties {
 
 	/** 出力フォルダー */
 	public static final String Bt001_OUTPUT_FOLDER = "Bt001_OUTPUT_FOLDER";
-	public static final String Bt003_OUTPUT_FOLDER = "Bt003_OUTPUT_FOLDER";
-	public static final String Bt004_OUTPUT_FOLDER = "Bt004_OUTPUT_FOLDER";
-
-
-    /** オファー企業毎同意ファイル作成  出力ファイル*/
-    public static final String Bt001_OUTPUT_FILENAME_ENTERPRISE = "Bt001_OUTPUT_FILENAME_ENTERPRISE";
-
-    /** 対価管理データファイル作成 出力ファイル */
-    public static final String Bt001_OUTPUT_FILENAME_PERSONAL = "Bt001_OUTPUT_FILENAME_PERSONAL";
-
-    /** S3出力フォルダー */
-    public static final String Bt001_S3_FOLDER = "Bt001_S3_FOLDER";
-    public static final String Bt003_S3_FOLDER = "Bt003_S3_FOLDER";
-    public static final String Bt004_S3_FOLDER = "Bt004_S3_FOLDER";
-
-	/** IF出力フォルダー */
-    public static final String Bt001_IF_OUTPUT_FOLDER = "Bt001_IF_OUTPUT_FOLDER";
-    /** IF出力フォルダーBK */
-    public static final String Bt001_IF_OUTPUT_FOLDER_BK = "Bt001_IF_OUTPUT_FOLDER_BK";
 
 	/**
 	 * コンストラクタ

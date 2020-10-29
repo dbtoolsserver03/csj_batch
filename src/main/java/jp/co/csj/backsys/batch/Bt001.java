@@ -9,9 +9,7 @@ package jp.co.csj.backsys.batch;
 
 import jp.co.csj.backsys.batch.abs.AbsApiBatch;
 import jp.co.csj.backsys.batch.check.Ck001;
-import jp.co.csj.backsys.batch.service.sv005.Sv00101;
-import jp.co.csj.backsys.common.message.CsjMessageKey;
-import jp.co.csj.backsys.common.property.CsjProperties;
+import jp.co.csj.backsys.batch.service.Sv00101;
 
 public class Bt001 extends AbsApiBatch {
 
@@ -35,9 +33,7 @@ public class Bt001 extends AbsApiBatch {
     @Override
     public void run() throws Throwable {
 
-        // 1 本人確認中の顧客情報取得
-        log.info(CsjProperties.getMsgLog(CsjMessageKey.I0201, 55,getBatchId()));
-
+    	// ここから、業務ロジックを処理する
         sv00101.transfer("aa");
     }
 
@@ -75,7 +71,6 @@ public class Bt001 extends AbsApiBatch {
     @Override
     public void init() throws Throwable {
 
-        // システム結果確認情報(MYDB)
         sv00101 = new Sv00101(this);
     }
 

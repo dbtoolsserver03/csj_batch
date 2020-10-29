@@ -2,7 +2,7 @@
  * プログラム ：Ck001.java
  * 説明 ：チェッククラス.
  *****************************************************************************
- * 変更履歴： 2020.02.12 : 新規作成
+ * 変更履歴： 2020.xx.xx : 新規作成
  ******************************************************************************/
 
 package jp.co.csj.backsys.batch.check;
@@ -64,8 +64,7 @@ public class Ck001 {
      */
     public void checkProperties() throws Throwable {
 
-        // vmFile check
-        ckCommon.checkMailVmFileProperties(CsjProperties.Bt005_MAIL_VM_FILE);
+//        ckCommon.checkMailVmFileProperties(CsjProperties.Bt005_MAIL_VM_FILE);
 
     }
 }

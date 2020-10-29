@@ -2,12 +2,13 @@
  * プログラム ：MyCommentGenerator.java
  * 開発者用　MYBATIS　クラス＆マッパー　コメント自動生成.
  *****************************************************************************
- * 変更履歴： 2020.02.12 : 新規作成
+ * 変更履歴： 2020.xx.xx : 新規作成
  ******************************************************************************/
 
 package jp.co.csj.backsys.mybatis.generator;
 import java.util.Properties;
 import java.util.Set;
+
 import org.mybatis.generator.api.CommentGenerator;
 import org.mybatis.generator.api.IntrospectedColumn;
 import org.mybatis.generator.api.IntrospectedTable;
