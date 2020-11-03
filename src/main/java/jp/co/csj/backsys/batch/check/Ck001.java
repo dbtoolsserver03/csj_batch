@@ -35,18 +35,6 @@ public class Ck001 {
     public void checkSys() throws Throwable {
         Map<String, String> map = new LinkedHashMap<String, String>();
 
-        // JsFrontApp
-        ckCommon.setJsFrontApISys(map);
-
-        // BACKOFFICE_DATABASE
-        ckCommon.setMydbDbSys(map);
-
-        // J_SCORE_API_DATABASE
-        ckCommon.setFrtDbSys(map);
-
-        // SSL_CA
-        ckCommon.setSslCa(map);
-
         // MAIL
         ckCommon.setMailSys(map);
 

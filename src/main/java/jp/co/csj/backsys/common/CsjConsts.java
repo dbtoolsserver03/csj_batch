@@ -80,17 +80,6 @@ public class CsjConsts {
 	/** ログメッセージ：終了 */
 	public static final String MSG_END = "終了";
 
-	/** ログメッセージ：MGR */
-	public static final String MSG_MGR = "MGR";
-
-	/** ログメッセージ：S3 */
-	public static final String MSG_S3 = "S3";
-
-	/** ログメッセージ：PDS */
-	public static final String MSG_PDS = "PDS";
-
-	/** ログメッセージ：IF */
-	public static final String MSG_IF = "IF";
 
 	public static final String STR_ENTER = "\n";
 	/** データベース接続 */
@@ -115,7 +104,7 @@ public class CsjConsts {
 	public static final String LOG_J_INS = "登録";
 
 	/** CID */
-	public static final String STR_CID = "CID";
+	public static final String STR_CID = "ID";
 
 	/** sucessful.txt */
 	public static final String STR_SUCESSFUL_FILE_NAME = "sucessful.txt";

@@ -56,16 +56,6 @@ public class CkCommon {
         // log
         map.put(CsjConsts.SYS_CSJ_APP_LOG, CsjConsts.LOG_J_LOG_PATH);
 	}
-	/**
-	 * JsFrontAPI用
-	 *
-	 * @param map
-	 */
-	public void setJsFrontApISys(Map<String, String> map) {
-        // http://xxx.xxx.xxx.xxx:9999
-        map.put(CsjConsts.SYS_HTTPS_PROXY, CsjConsts.LOG_J_HTTPS_PROXY);
-
-	}
 
 	/**
 	 *
