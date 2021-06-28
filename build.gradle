@@ -53,6 +53,12 @@ repositories {
 
 dependencies {
 //compile fileTree(dir:'libs',include:['*.jar'])
+//implementation fileTree(dir: 'libs', include: ['*.jar'])
+//或
+//api fileTree(dir: 'libs', include: ['*.jar'])
+// 用api指令编译，Glide依赖对app Module 是可见的，app Module也可以使用Glide依赖
+// 用implement指令编译依赖对app Module 是不可见的，app Module不可以直接使用Glide
+
 
    // Spring MVC
 compile group: 'org.springframework', name: 'spring-beans', version: '5.2.3.RELEASE'
