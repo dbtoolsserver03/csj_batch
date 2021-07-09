@@ -1,3 +1,44 @@
 https://gitee.com/dbtoolsserver03/demo-gradle
 
 
+// gradle 环境分离配置 打包参数-Dprofile=product
+def env = System.getProperty("profile") ?: "dev"
+if (env == "dev") {
+    sourceSets {
+        main {
+            resources {
+                srcDirs = ["src/main/resources"]
+            }
+        }
+    }
+} else {
+    sourceSets {
+        main {
+            resources {
+                srcDirs = ["src/main/filters/$env"]
+            }
+        }
+    }
+}
+
+/** 覆盖web.xml配置文件 **/
+task copyConfig(type:Copy) {
+    println "config file"
+    from 'res/application.yml'
+    into file('src/main/resources')
+}
+//https://blog.csdn.net/qq_28336067/article/details/100698621
+
+/*
+环境的区分：
+
+-Dprofile=product生产环境
+-Dprofile=dev 开发环境
+
+配置文件替换：
+根据不同的环境配置不同的resources，这里存放的是一些Spring配置文件，jdbc配置文件。根据不同的环境变量变更>resources的目录即可达到切换配置文件的目的。
+web.xml替换：比较特殊的是web.xml文件无法替换，只有通过打war包时进行替换，不能是在build之前这是犯过错误的。
+war.dependsOn 在打war包之前执行一个任务来替换web.xml，这个任务也可以根据不同的profile进行配置不同的web.xml替换。web.xml本地也会被替换成指定的内容，这时就需要恢复一下本地文件了。
+
+*/
+
