@@ -1,4 +1,3 @@
-package jp.co.jscore.backsys.util.logger;
 
 import java.lang.reflect.Method;
 import java.util.Objects;
@@ -18,7 +17,7 @@ public class LoggerAspect {
 
     private Logger logger = LoggerFactory.getLogger(LoggerAspect.class);
 
-    @Pointcut("execution(public * jp.co.jscore.backsys.controller.*.*(..)) && @annotation(jp.co.jscore.backsys.util.logger.Loggable)")
+    @Pointcut("execution(public * jp.co.backsys.controller.*.*(..)) && @annotation(jp.co.backsys.util.logger.Loggable)")
     public void log(){
     }
 
